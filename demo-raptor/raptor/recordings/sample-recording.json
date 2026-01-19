@@ -1,0 +1,91 @@
+{
+  "_meta": {
+    "version": "1.0",
+    "service": "demo-service",
+    "recordedAt": "2024-01-18T10:00:00.000Z",
+    "environment": "local",
+    "generatedBy": "TARS - Test Automation and Review System"
+  },
+  "requests": [
+    {
+      "id": "req-001",
+      "timestamp": "2024-01-15T10:00:00.000Z",
+      "method": "GET",
+      "path": "/api/health",
+      "headers": {
+        "Accept": "application/json",
+        "User-Agent": "Raptor/1.0"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "status": "ok"
+        },
+        "latencyMs": 15
+      }
+    },
+    {
+      "id": "req-002",
+      "timestamp": "2024-01-15T10:00:01.000Z",
+      "method": "GET",
+      "path": "/api/users",
+      "headers": {
+        "Accept": "application/json",
+        "Authorization": "[MASKED]"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "users": [
+            {
+              "id": "user-001",
+              "name": "John Doe"
+            },
+            {
+              "id": "user-002",
+              "name": "Jane Smith"
+            }
+          ]
+        },
+        "latencyMs": 45
+      }
+    },
+    {
+      "id": "req-003",
+      "timestamp": "2024-01-15T10:00:02.000Z",
+      "method": "POST",
+      "path": "/api/orders",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "[MASKED]"
+      },
+      "body": {
+        "userId": "user-001",
+        "items": [
+          {
+            "productId": "prod-001",
+            "quantity": 2
+          }
+        ]
+      },
+      "response": {
+        "status": 201,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "id": "order-001",
+          "status": "created",
+          "total": 59.98
+        },
+        "latencyMs": 120
+      }
+    }
+  ]
+}

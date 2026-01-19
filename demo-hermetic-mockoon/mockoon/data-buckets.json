@@ -1,0 +1,28 @@
+{
+  "_meta": {
+    "description": "Mockoon Data Buckets for Hermetic Testing",
+    "generatedBy": "TARS - Test Automation and Review System",
+    "usage": "These data buckets provide initial test data for hermetic testing"
+  },
+  "users": [
+    { "id": "user-001", "name": "John Doe", "email": "john@example.com", "role": "admin", "active": true, "createdAt": "2024-01-15T10:00:00Z" },
+    { "id": "user-002", "name": "Jane Smith", "email": "jane@example.com", "role": "user", "active": true, "createdAt": "2024-01-16T11:00:00Z" },
+    { "id": "user-003", "name": "Bob Wilson", "email": "bob@example.com", "role": "user", "active": false, "createdAt": "2024-01-17T12:00:00Z" }
+  ],
+  "orders": [
+    { "id": "order-001", "userId": "user-001", "status": "completed", "total": 99.99, "items": 3, "createdAt": "2024-01-20T09:00:00Z" },
+    { "id": "order-002", "userId": "user-002", "status": "pending", "total": 149.50, "items": 2, "createdAt": "2024-01-21T10:00:00Z" },
+    { "id": "order-003", "userId": "user-001", "status": "processing", "total": 75.00, "items": 1, "createdAt": "2024-01-22T11:00:00Z" }
+  ],
+  "products": [
+    { "id": "product-001", "name": "Widget Pro", "price": 29.99, "stock": 100, "category": "electronics", "active": true },
+    { "id": "product-002", "name": "Gadget Plus", "price": 49.99, "stock": 50, "category": "electronics", "active": true },
+    { "id": "product-003", "name": "Tool Basic", "price": 19.99, "stock": 200, "category": "tools", "active": true }
+  ],
+  "_hermeticState": {
+    "initialized": true,
+    "seedCount": 0,
+    "resetCount": 0,
+    "lastReset": null
+  }
+}

@@ -1,0 +1,56 @@
+yml
+# Hermetic Configuration File for Payment Service
+
+spring:
+  # Disable external service calls
+  datasource:
+    url: jdbc:h2:mem:payment-service
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  # Enable detailed logging for debugging
+  logging:
+    level: DEBUG
+    pattern-converter:
+      date:
+        format: yyyy-MM-dd HH:mm:ss.SSS
+      time:
+        format: HH:mm:ss.SSS
+
+  # Configure fast startup
+  web:
+    context-init-injection-timeout: 0
+
+  # Enable H2 console for inspection
+  h2:
+    console:
+      enabled: true
+
+  # Set appropriate timeouts
+  jpa:
+    properties:
+      hibernate:
+        propertyvalueformatting: true
+        type: org.hibernate.type.StandardTypeRegistryImplementor
+  web:
+    client:
+      read-timeout: 30000
+      connect-timeout: 30000
+
+# Disable external service calls
+payment-gateway:
+  url: null
+  username: null
+  password: null
+
+# Mock InventoryService
+inventory-service:
+  enabled: false

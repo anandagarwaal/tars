@@ -1,0 +1,291 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import distinctive font */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+body {
+  font-family: var(--font-sans);
+}
+
+/* Custom scrollbar - Light Mode */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Markdown styles - Light Mode */
+.prose-markdown {
+  @apply text-slate-700 leading-relaxed;
+}
+
+.prose-markdown h1 {
+  @apply text-2xl font-bold text-slate-900 mt-6 mb-4;
+}
+
+.prose-markdown h2 {
+  @apply text-xl font-semibold text-slate-900 mt-5 mb-3;
+}
+
+.prose-markdown h3 {
+  @apply text-lg font-medium text-slate-800 mt-4 mb-2;
+}
+
+.prose-markdown p {
+  @apply mb-4;
+}
+
+.prose-markdown ul {
+  @apply list-disc list-inside mb-4 space-y-1;
+}
+
+.prose-markdown ol {
+  @apply list-decimal list-inside mb-4 space-y-1;
+}
+
+.prose-markdown code {
+  @apply bg-slate-100 px-1.5 py-0.5 rounded text-indigo-600 font-mono text-sm;
+}
+
+.prose-markdown pre {
+  @apply bg-slate-900 border border-slate-200 rounded-lg p-4 overflow-x-auto mb-4;
+}
+
+.prose-markdown pre code {
+  @apply bg-transparent p-0 text-slate-100;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.5s ease-out;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Gradient backgrounds */
+.bg-gradient-mesh {
+  background: 
+    radial-gradient(at 40% 20%, hsla(240, 100%, 97%, 1) 0px, transparent 50%),
+    radial-gradient(at 80% 0%, hsla(217, 100%, 97%, 1) 0px, transparent 50%),
+    radial-gradient(at 0% 50%, hsla(252, 100%, 97%, 1) 0px, transparent 50%),
+    radial-gradient(at 80% 50%, hsla(210, 100%, 97%, 1) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, hsla(240, 100%, 98%, 1) 0px, transparent 50%);
+}
+
+/* Staggered animations for lists */
+.stagger-animation > * {
+  opacity: 0;
+  animation: slideUp 0.4s ease-out forwards;
+}
+
+.stagger-animation > *:nth-child(1) { animation-delay: 0.05s; }
+.stagger-animation > *:nth-child(2) { animation-delay: 0.1s; }
+.stagger-animation > *:nth-child(3) { animation-delay: 0.15s; }
+.stagger-animation > *:nth-child(4) { animation-delay: 0.2s; }
+.stagger-animation > *:nth-child(5) { animation-delay: 0.25s; }
+.stagger-animation > *:nth-child(6) { animation-delay: 0.3s; }
+.stagger-animation > *:nth-child(7) { animation-delay: 0.35s; }
+.stagger-animation > *:nth-child(8) { animation-delay: 0.4s; }
+
+/* Pulse animation for AI processing */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(99, 102, 241, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(99, 102, 241, 0.5);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Shimmer effect for loading states */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(241, 245, 249, 0.5) 25%,
+    rgba(226, 232, 240, 0.5) 50%,
+    rgba(241, 245, 249, 0.5) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Glass effect - Light mode */
+.glass {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6, #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-teal {
+  background: linear-gradient(135deg, #0d9488, #0891b2, #0284c7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Interactive hover states */
+.hover-lift {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.15);
+}
+
+/* Card styles */
+.card {
+  @apply bg-white border border-slate-200 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300;
+}
+
+.card-elevated {
+  @apply bg-white border border-slate-100 rounded-2xl shadow-lg shadow-slate-200/50;
+}
+
+/* Button styles */
+.btn-primary {
+  @apply bg-gradient-to-r from-indigo-600 to-violet-600 text-white font-semibold py-3 px-6 rounded-xl 
+         hover:from-indigo-500 hover:to-violet-500 
+         shadow-lg shadow-indigo-500/30 hover:shadow-indigo-500/40 
+         transition-all duration-200;
+}
+
+.btn-secondary {
+  @apply bg-white border-2 border-slate-200 text-slate-700 font-semibold py-3 px-6 rounded-xl 
+         hover:border-indigo-300 hover:text-indigo-600 
+         transition-all duration-200;
+}
+
+/* Focus ring utility */
+.focus-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:ring-offset-2 focus:ring-offset-white;
+}
+
+/* Badge styles */
+.badge {
+  @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium;
+}
+
+.badge-indigo {
+  @apply bg-indigo-50 text-indigo-700 border border-indigo-100;
+}
+
+.badge-teal {
+  @apply bg-teal-50 text-teal-700 border border-teal-100;
+}
+
+.badge-amber {
+  @apply bg-amber-50 text-amber-700 border border-amber-100;
+}
+
+.badge-emerald {
+  @apply bg-emerald-50 text-emerald-700 border border-emerald-100;
+}
+
+.badge-rose {
+  @apply bg-rose-50 text-rose-700 border border-rose-100;
+}
+
+/* Section divider */
+.section-divider {
+  @apply h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent;
+}
+
+/* Typing animation for AI responses */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink {
+  50% { border-color: transparent }
+}
+
+.typing-effect {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid #6366f1;
+  animation: typing 2s steps(40) forwards, blink 0.7s step-end infinite;
+}
+
+/* Hero pattern */
+.hero-pattern {
+  background-image: 
+    radial-gradient(circle at 1px 1px, rgba(99, 102, 241, 0.15) 1px, transparent 0);
+  background-size: 24px 24px;
+}

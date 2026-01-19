@@ -1,0 +1,24 @@
+{
+  "name": "tars",
+  "version": "1.0.0",
+  "description": "TARS - Test Automation and Review System",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev:api\" \"npm run dev:web\"",
+    "dev:api": "npm run dev --workspace=@tars/api",
+    "dev:web": "npm run dev --workspace=@tars/web",
+    "dev:cli": "npm run dev --workspace=@tars/cli",
+    "build": "npm run build --workspaces",
+    "lint": "npm run lint --workspaces"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "entity": "User",
+  "basePath": "/api/users",
+  "routes": [
+    { "method": "GET", "path": "/users", "description": "List all users", "databucket": "users" },
+    { "method": "GET", "path": "/users/:id", "description": "Get User by ID" },
+    { "method": "POST", "path": "/users", "description": "Create new User" },
+    { "method": "PUT", "path": "/users/:id", "description": "Update User" },
+    { "method": "DELETE", "path": "/users/:id", "description": "Delete User" }
+  ],
+  "sampleData": [
+    { "id": "user-001", "name": "John Doe", "email": "john@example.com", "role": "admin", "active": true, "createdAt": "2024-01-15T10:00:00Z" },
+    { "id": "user-002", "name": "Jane Smith", "email": "jane@example.com", "role": "user", "active": true, "createdAt": "2024-01-16T11:00:00Z" },
+    { "id": "user-003", "name": "Bob Wilson", "email": "bob@example.com", "role": "user", "active": false, "createdAt": "2024-01-17T12:00:00Z" }
+  ]
+}

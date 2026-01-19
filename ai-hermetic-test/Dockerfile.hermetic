@@ -1,0 +1,52 @@
+dockerfile
+# Use multi-stage build for smaller image
+FROM eclipse-temurin:17-jre-alpine AS builder
+
+# Set maintainer label
+LABEL maintainer="Your Name <your.email@example.com>"
+
+# Add service label
+LABEL service="payment-service"
+
+# Label as hermetic
+LABEL type=hermetic
+
+# Copy application code to the final image
+COPY . /app
+
+# Install dependencies and compile code
+RUN addgroup -S payment-service && adduser -S -G payment-service payment-server && \
+    mkdir -p /app/src/main/java && \
+    cp src/main/java/* /app/src/main/java/ && \
+    javac --enable-preview --release 17 /app/src/main/java/*.java
+
+# Create a new image with the compiled code
+FROM eclipse-temurin:17-jre-alpine
+
+# Set maintainer label
+LABEL maintainer="Your Name <your.email@example.com>"
+
+# Add service label
+LABEL service="payment-service"
+
+# Label as hermetic
+LABEL type=hermetic
+
+# Copy application code to the final image
+COPY --from=builder /app/src/main/java/* .
+
+# Install dependencies and compile code
+RUN addgroup -S payment-server && \
+    adduser -S -G payment-server payment-server && \
+    mkdir -p /app/src/main/java && \
+    cp src/main/java/* /app/src/main/java/ && \
+    javac --enable-preview --release 17 /app/src/main/java/*.java
+
+# Expose port for health check
+EXPOSE 8080
+
+# Set JVM flags for testing
+ENV JAVA_OPTS=-Xmx512m -XX:+UseG1GC -XX:MaxGCPauseMillis=50
+
+# Configure for fast startup
+CMD ["java", "-jar", "payment-server.jar"]

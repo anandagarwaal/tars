@@ -1,0 +1,40 @@
+{
+  "description": "Hermetic Server Control Routes",
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/health",
+      "description": "Health check endpoint",
+      "response": { "status": "ok" }
+    },
+    {
+      "method": "POST",
+      "path": "/hermetic/seedEntities",
+      "description": "Seed test entities",
+      "requestBody": {
+        "entities": [
+          { "entityId": "string", "entityType": "string", "entityValue": "object" }
+        ]
+      },
+      "response": { "success": true, "seededCount": 0, "seededIds": [] }
+    },
+    {
+      "method": "POST",
+      "path": "/hermetic/reset",
+      "description": "Reset to base state",
+      "response": { "success": true, "message": "Server reset" }
+    },
+    {
+      "method": "GET",
+      "path": "/hermetic/sample-data",
+      "description": "List available sample data types",
+      "response": { "availableTypes": ["User", "Order", "Product"] }
+    },
+    {
+      "method": "GET",
+      "path": "/hermetic/sample-data/:entityType",
+      "description": "Get sample data for entity type",
+      "response": { "id": "sample-id", "name": "Sample Name" }
+    }
+  ]
+}
